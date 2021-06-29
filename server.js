@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // turn on routes
 app.use(routes);
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 
 // turn on connection to db and server
 sequelize.sync({ force: true }).then(() => {
