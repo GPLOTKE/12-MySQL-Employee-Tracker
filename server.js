@@ -1,5 +1,6 @@
 const mysql = require('mysql');
-const inquirer = require('inquirer')
+const inquirer = require('inquirer');
+const table = require('console.table');
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -14,3 +15,17 @@ connection.connect((err) => {
     console.log(`connected as id ${connection.threadId}`);
     connection.end();
 });
+
+inquirer.prompt([{
+    type: 'list',
+    message: 'What would you like to do?',
+    name: 'task',
+    choices: ['View Departments',
+        'View Roles',
+        'View Employees',
+        'Add Departments',
+        'Add Roles',
+        'Add Employees',
+        'Update Employee Roles'
+    ],
+}, ])
