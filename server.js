@@ -1,18 +1,16 @@
-const express = require('express');
-const routes = require('./routes');
-const sequelize = require('./config/connection');
+const mysql = require('mysql');
+const inquirer = require('inquirer')
 
-const app = express();
-const PORT = process.env.PORT || 3001;
+const connection = mysql.createConnection({
+    host: 'localhost',
+    port: 3306,
+    user: 'root',
+    password: 'Password1',
+    database: 'employee_db',
+});
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// turn on routes
-app.use(routes);
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
-
-// turn on connection to db and server
-sequelize.sync({ force: true }).then(() => {
-    app.listen(PORT, () => console.log('Now listening'));
+connection.connect((err) => {
+    if (err) throw err;
+    console.log(`connected as id ${connection.threadId}`);
+    connection.end();
 });
