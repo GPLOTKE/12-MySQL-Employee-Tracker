@@ -1,8 +1,8 @@
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('Joe', 'Smith',), ('Brad', 'Jones',), ('Ashley', 'Brown',);
+VALUES ('Joe', 'Smith', 2, 1), ('Brad', 'Jones', 4, 2), ('Ashley', 'Brown', 5, 3);
 
 INSERT INTO employee (first_name, last_name, role_id)
-VALUES ('Jennifer', 'Buchannon',), ('Brian', 'Hurley',), ('Emily', 'Jackson',);
+VALUES ('Jennifer', 'Buchannon', 1), ('Brian', 'Hurley', 3), ('Emily', 'Jackson', 6);
 
 
 INSERT INTO role (title, salary, department_id)
